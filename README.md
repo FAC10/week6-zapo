@@ -23,6 +23,6 @@ As a user who likes to share my recipes:
 
 ## Architecture
 
-![schema and architecture](https://cloud.githubusercontent.com/assets/20152018/24457174/5ba52a5e-148d-11e7-8117-8a87ea3d6575.jpg)
+![schema and architecture](https://cloud.githubusercontent.com/assets/20152018/24463909/15572904-14a0-11e7-81c0-11c86f1b68cd.jpg)
 
 ## [Learnings](./learnings.md)
