@@ -1,3 +1,6 @@
+[![codecov](https://codecov.io/gh/pbywater/week6-zapo/branch/master/graph/badge.svg)](https://codecov.io/gh/pbywater/week6-zapo)
+[![Build Status](https://travis-ci.org/pbywater/week6-zapo.svg?branch=master)](https://travis-ci.org/pbywater/week6-zapo)
+
 # ZAPO Recipes
 
 ## Overview
