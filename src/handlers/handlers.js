@@ -14,6 +14,7 @@ handlers.home = (req, res) => {
     if (err) {
       res.writeHead(500, { 'Content-Type': 'text/html' });
       res.end(`<h1>${err.message}, sorry!</h1>`);
+      return;
     }
     res.writeHead(200, { 'Content-Type': 'text/html' });
     res.end(file);
@@ -26,6 +27,7 @@ handlers.public = (req, res) => {
     if (err || endpoint.includes('..')) {
       res.writeHead(500, { 'Content-Type': 'text/html' });
       res.end('<h1>500 Server Error, sorry!</h1>');
+      return;
     }
     const extension = endpoint.split('.')[1];
     res.writeHead(200, { 'Content-Type': extensionType[extension] });
