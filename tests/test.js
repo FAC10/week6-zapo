@@ -7,3 +7,4 @@ test('A test test', (t) => {
 });
 
 require('./src/router.test.js');
+require('./src/createHtml.test.js');

@@ -3,7 +3,7 @@
 function createHtml(err, recipeArr) {
   let markup = '';
   if (err) {
-    markup += err.message;
+    markup += 'Sorry, we\'re having trouble finding recipes right now';
     return markup;
   }
   recipeArr.map((recipe) => {
