@@ -21,7 +21,7 @@
   "homepage": "https://github.com/pbywater/week6-zapo#readme",
   "dependencies": {
     "pg": "^6.1.5"
-  }
+  },
   "devDependencies": {
     "codecov": "^2.1.0",
     "eslint": "^3.18.0",
