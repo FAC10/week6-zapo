@@ -12,6 +12,10 @@
 - Build your database by running: `$ node database/db_build.js`
 - It is now on elephant!
 
+## Setting up server
+
+[We followed Dan's guide](https://github.com/sofer/sssk/blob/master/router.js)
+
 ## Outputting data from database
 
 ```sql
@@ -28,6 +32,14 @@ Inside of the select, we have to do a subquery where we select the names from th
 
 We then compare that id to the recipes id within our subquery, which gives us a table of just the ingredients relevant to the recipe relative to the row we're creating in `recipes_org` and we use the array aggregate function to turn that single column table into an array which we then put into the row we are creating in `recipes_org` table.
 
-## Setting up server
+## A **huge** struggle :cry::cry::cry:
 
-[We followed Dan's guide](https://github.com/sofer/sssk/blob/master/router.js)
+We struggled getting the following logic to work:
+
+- if recipe name exists, add a star to the end ----> do recursion until recipe name is unique
+- if cuisine name doesn't exist ----> create it
+- get id of cuisine name
+- put name, cuisine_id and body into recipe
+- for each ingredient, if it doesn't exist, create it
+- find id for each ingredient
+- add each ingredient id with the recipe id to the recipe_ingredients table
