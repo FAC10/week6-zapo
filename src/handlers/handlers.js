@@ -1,4 +1,5 @@
 const fs = require('fs');
+const getData = require('./getData.js');
 
 const handlers = {};
 
@@ -15,6 +16,7 @@ handlers.home = (req, res) => {
       res.writeHead(500, { 'Content-Type': 'text/html' });
       res.end(`<h1>${err.message}, sorry!</h1>`);
     }
+    getData();
     res.writeHead(200, { 'Content-Type': 'text/html' });
     res.end(file);
   });
