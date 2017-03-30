@@ -1,6 +1,7 @@
 const fs = require('fs');
 const getData = require('./getData.js');
 const createHtml = require('../createHtml.js');
+const post = require('./handlePost');
 
 const handlers = {};
 
@@ -26,6 +27,19 @@ handlers.home = (req, res) => {
   });
 };
 
+handlers.page = (req, res) => {
+  const endpoint = req.url;
+  fs.readFile(`${__dirname}/../../public${endpoint}.html`, (err, file) => {
+    if (err) {
+      res.writeHead(500, { 'Content-Type': 'text/html' });
+      res.end('<h1>500 Server Error, sorry!</h1>');
+      return;
+    }
+    res.writeHead(200, { 'Content-Type': 'text/html' });
+    res.end(file);
+  });
+};
+
 handlers.public = (req, res) => {
   const endpoint = req.url;
   fs.readFile(`${__dirname}/../..${endpoint}`, (err, file) => {
@@ -39,6 +53,8 @@ handlers.public = (req, res) => {
     res.end(file);
   });
 };
+
+handlers.post = post;
 
 handlers.notFound = (request, response) => {
   response.writeHead(404, { 'Content-Type': 'text/html' });
