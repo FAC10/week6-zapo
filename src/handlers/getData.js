@@ -5,7 +5,8 @@ const getData = (cb) => {
     if (err) {
       cb(err);
     } else {
-      return cb(null, res.rows);
+      console.log(res.rows);
+      cb(null, res.rows);
     }
   });
 };

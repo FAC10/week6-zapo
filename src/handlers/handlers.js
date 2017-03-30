@@ -16,11 +16,13 @@ handlers.home = (req, res) => {
     if (err) {
       res.writeHead(500, { 'Content-Type': 'text/html' });
       res.end(`<h1>${err.message}, sorry!</h1>`);
-      return;
     }
-    getData(createHtml);
-    res.writeHead(200, { 'Content-Type': 'text/html' });
-    res.end(file);
+    getData((err, recipeArr) => {
+      const markup = createHtml(err, recipeArr);
+      const html = file.replace(/<!--Replace-->/, markup);
+      res.writeHead(200, { 'Content-Type': 'text/html' });
+      res.end(html);
+    });
   });
 };
 
