@@ -1,5 +1,7 @@
 const fs = require('fs');
 const getData = require('./getData.js');
+const postData = require('../postData.js');
+
 
 const handlers = {};
 
@@ -10,6 +12,13 @@ const extensionType = {
   ico: 'image/x-icon',
 };
 
+const obj = {
+  title: 'banana bread',
+  body: 'do the thing',
+  cuisine: 'dessert',
+  ingredients: ['banana', 'bread'],
+};
+
 handlers.home = (req, res) => {
   fs.readFile(`${__dirname}/../../public/index.html`, (err, file) => {
     if (err) {
@@ -17,7 +26,6 @@ handlers.home = (req, res) => {
       res.end(`<h1>${err.message}, sorry!</h1>`);
       return;
     }
-    getData();
     res.writeHead(200, { 'Content-Type': 'text/html' });
     res.end(file);
   });
