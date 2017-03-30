@@ -32,7 +32,7 @@ test('Test createHtml with correct data', (t) => {
 
 test('Test createHtml with an error', (t) => {
   const expected = 'Sorry, we\'re having trouble finding recipes right now';
-  const actual = createHtml(new Error());
+  const actual = createHtml('Error lol');
   t.equal(actual, expected, 'Should return an error');
   t.end();
 });
