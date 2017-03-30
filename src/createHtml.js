@@ -1,7 +1,11 @@
 // For info on template strings, see this link: http://wesbos.com/template-strings-html
 
-function createHtml(recipeArr) {
+function createHtml(err, recipeArr) {
   let markup = '';
+  if (err) {
+    markup += err.message;
+    return markup;
+  }
   recipeArr.map((recipe) => {
     markup += `
     <article class="recipe">
@@ -19,10 +23,7 @@ function createHtml(recipeArr) {
     </article>
     `;
   });
-  console.log(markup);
   return markup;
 }
 
-const testarr = [{ title: 'Muffins', body: '1 cup self-raising flour\n3 tbsp sugar\n1 cup thickened cream\nPreheat oven to 180°C fan forced. Spray a 24 cup mini muffin tin with cooking spray and set aside.\nIn a bowl, mix the flour and sugar together.\nPour in the cream and fold mixture together using a spatula until all ingredients are just wet.\nSpoon into the muffin tin and bake for 10-15 minutes.\nLeave to cool in the tin for 2 minutes and then cool further on a wire rack.', cuis_name: 'American', ingredients: ['self-raising flour', 'caster sugar', 'thickened cream'] }, { title: 'Muffins', body: '1 cup self-raising flour\n3 tbsp sugar\n1 cup thickened cream\nPreheat oven to 180°C fan forced. Spray a 24 cup mini muffin tin with cooking spray and set aside.\nIn a bowl, mix the flour and sugar together.\nPour in the cream and fold mixture together using a spatula until all ingredients are just wet.\nSpoon into the muffin tin and bake for 10-15 minutes.\nLeave to cool in the tin for 2 minutes and then cool further on a wire rack.', cuis_name: 'American', ingredients: ['self-raising flour', 'caster sugar', 'thickened cream'] }];
-
-createHtml(testarr);
+module.exports = createHtml;
