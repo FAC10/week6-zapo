@@ -14,6 +14,26 @@ const routes = {
       headers: { 'Content-Type': 'text/html' },
     },
   ],
+  thanks: [
+    {
+      method: 'GET',
+      url: '/thanks',
+    },
+    {
+      statusCode: 200,
+      headers: { 'Content-Type': 'text/html' },
+    },
+  ],
+  form: [
+    {
+      method: 'GET',
+      url: '/form',
+    },
+    {
+      statusCode: 200,
+      headers: { 'Content-Type': 'text/html' },
+    },
+  ],
   css: [
     {
       method: 'GET',
