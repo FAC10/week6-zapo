@@ -25,4 +25,15 @@ As a user who likes to share my recipes:
 
 ![schema and architecture](https://cloud.githubusercontent.com/assets/20152018/24463909/15572904-14a0-11e7-81c0-11c86f1b68cd.jpg)
 
+## Dependencies
+
+- Tape
+- Shot
+- tap-spec
+- istanbul
+- codecov
+- nodemon
+- es-lint
+- env2
+
 ## [Learnings](./learnings.md)
