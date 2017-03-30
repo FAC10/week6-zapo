@@ -2,6 +2,15 @@
   font-family: 'Libre Franklin', sans-serif;
 }
 
+input,
+label,
+textarea {
+  display: block;
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
+}
+
 body {
   margin: 0;
 }
@@ -22,4 +31,17 @@ body {
     color: white;
     width: 100%;
     letter-spacing: 1.5rem;
+}
+
+.container {
+  max-width: 40em;
+  margin: 0 auto;
+  margin-top: 2em;
+}
+
+.form__input {
+  width: 100%;
+  margin-bottom: 1em;
+  padding: 0.5em;
+  border: 1px solid grey;
 }
