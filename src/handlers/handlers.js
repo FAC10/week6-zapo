@@ -1,5 +1,6 @@
 const fs = require('fs');
 const getData = require('./getData.js');
+const createHtml = require('../createHtml.js');
 
 const handlers = {};
 
@@ -11,15 +12,17 @@ const extensionType = {
 };
 
 handlers.home = (req, res) => {
-  fs.readFile(`${__dirname}/../../public/index.html`, (err, file) => {
+  fs.readFile(`${__dirname}/../../public/index.html`, 'utf8', (err, file) => {
     if (err) {
       res.writeHead(500, { 'Content-Type': 'text/html' });
       res.end(`<h1>${err.message}, sorry!</h1>`);
-      return;
     }
-    getData();
-    res.writeHead(200, { 'Content-Type': 'text/html' });
-    res.end(file);
+    getData((err, recipeArr) => {
+      const markup = createHtml(err, recipeArr);
+      const html = file.replace(/<!--Replace-->/, markup);
+      res.writeHead(200, { 'Content-Type': 'text/html' });
+      res.end(html);
+    });
   });
 };
 
