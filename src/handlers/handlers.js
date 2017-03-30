@@ -12,6 +12,13 @@ const extensionType = {
   ico: 'image/x-icon',
 };
 
+const obj = {
+  title: 'banana bread',
+  body: 'do the thing',
+  cuisine: 'dessert',
+  ingredients: ['banana', 'bread'],
+};
+
 handlers.home = (req, res) => {
   fs.readFile(`${__dirname}/../../public/index.html`, 'utf8', (err, file) => {
     if (err) {

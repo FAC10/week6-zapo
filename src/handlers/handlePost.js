@@ -1,4 +1,5 @@
 const qs = require('querystring');
+const postData = require('../postData.js');
 
 const handlePost = (req, res) => {
   let data = '';
@@ -9,9 +10,10 @@ const handlePost = (req, res) => {
     const recipeObj = qs.parse(data);
     recipeObj.ingredients = recipeObj.ingredients.split(',');
     console.log(recipeObj);
+    postData.renameRecipe(recipeObj, postData.postData);
+    res.writeHead(302, { Location: '/thanks' });
+    res.end();
   });
-  res.writeHead(302, { Location: '/thanks' });
-  res.end();
 };
 
 module.exports = handlePost;
