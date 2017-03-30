@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/pbywater/week6-zapo#readme",
   "dependencies": {
+    "env2": "^2.1.1",
     "pg": "^6.1.5"
   },
   "devDependencies": {
@@ -32,8 +33,5 @@
     "shot": "^3.4.0",
     "tap-spec": "^4.1.1",
     "tape": "^4.6.3"
-  },
-  "dependencies": {
-    "env2": "^2.1.1"
   }
 }
