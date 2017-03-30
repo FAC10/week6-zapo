@@ -14,6 +14,26 @@ const routes = {
       headers: { 'Content-Type': 'text/html' },
     },
   ],
+  thanks: [
+    {
+      method: 'GET',
+      url: '/thanks',
+    },
+    {
+      statusCode: 200,
+      headers: { 'Content-Type': 'text/html' },
+    },
+  ],
+  form: [
+    {
+      method: 'GET',
+      url: '/form',
+    },
+    {
+      statusCode: 200,
+      headers: { 'Content-Type': 'text/html' },
+    },
+  ],
   css: [
     {
       method: 'GET',
@@ -75,5 +95,16 @@ Object.keys(routes).forEach((route) => {
       t.equal(expectedHeaders, res.headers['Content-Type'], `${expectedHeaders} = ${res.headers['Content-Type']}`);
       t.end();
     });
+  });
+});
+
+
+test('Test post router', (t) => {
+  shot.inject(router, { method: 'POST', url: '/submit', payload: '/submit?title=muffin&body=makemuffins&ingredients=flour,eggs,sugar&cuisine=British' }, (res) => {
+    const expectedStatusCode = 302;
+    const expectedLocation = '/thanks';
+    t.equal(res.statusCode, expectedStatusCode, 'status code should be 302');
+    t.equal(res.headers.Location, expectedLocation, 'location should be /thanks');
+    t.end();
   });
 });

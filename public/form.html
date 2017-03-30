@@ -1,29 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="https://fonts.googleapis.com/css?family=Libre+Franklin" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="./public/styles.css">
   <title>ZAPO Recipes</title>
 </head>
+
 <body>
-  <div class = 'header'>
-  <h1 class = 'title'>ZAPO RECIPES</h1>
-</div>
-  <form class = 'add_recipe'>
-  Add ingredients here, separated by commas. Leave out the amounts - these can go in your instructions!<br>
-  <input class = 'ingredients' type="text" name="ingredients" required><br>
-  What's the cuisine?<br>
-  <input class = 'cuisine' type="text" name="cuisine" required><br>
-  Add your recipe instructions here:<br>
-  <input class = 'instructions' type="text" name="instructions" required><br><br>
-  <input type="submit" value="Submit">
-</form>
-
-<script type="text/javascript" src='index.js'>
-
-</script>
+  <div class='header'>
+    <h1 class='title'>ZAPO RECIPES</h1>
+  </div>
+  <main class="container">
+    <form class="add_recipe" action="/submit" method="POST">
+      <h2 class="form__title">Add ingredients here, separated by commas. Leave out the amounts - these can go in your instructions!</h2>
+      <label class="form__label" for="title">Recipe title:</label>
+      <input class="form__input" id="title" type="text" name="title" placeholder="Tasty cake" required>
+      <label class="form__label" for="body">Instructions:</label>
+      <textarea class="form__input" id="body" type="text" name="body" placeholder="Make the cake" rows="6" required></textarea>
+      <label class="form__label" for="ingredients">Ingredients:</label>
+      <input class="form__input" id="ingredients" type="text" name="ingredients" placeholder="flour,eggs,butter,sugar" required>
+      <label class="form__label" for="cuisine">Cuisine:</label>
+      <input class="form__input" id="cuisine" type="text" name="cuisine" placeholder="english" required>
+      <input type="submit" value="Submit">
+    </form>
+  </main>
+  <script type="text/javascript" src='./public/index.js'>
+  </script>
 </body>
+
 </html>
