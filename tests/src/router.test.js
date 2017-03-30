@@ -97,3 +97,14 @@ Object.keys(routes).forEach((route) => {
     });
   });
 });
+
+
+test('Test post router', (t) => {
+  shot.inject(router, { method: 'POST', url: '/submit', payload: '/submit?title=muffin&body=makemuffins&ingredients=flour,eggs,sugar&cuisine=British' }, (res) => {
+    const expectedStatusCode = 302;
+    const expectedLocation = '/thanks';
+    t.equal(res.statusCode, expectedStatusCode, 'status code should be 302');
+    t.equal(res.headers.Location, expectedLocation, 'location should be /thanks');
+    t.end();
+  });
+});
