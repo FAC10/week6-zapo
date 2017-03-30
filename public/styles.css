@@ -1,0 +1,25 @@
+* {
+  font-family: 'Libre Franklin', sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+.header {
+  background-image: url('assets/header.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 80vh;
+  background-size: cover;
+  text-align: center;
+}
+
+.title {
+  background-size: contain;
+    font-size: 3rem;
+    position: absolute;
+    color: white;
+    width: 100%;
+    letter-spacing: 1.5rem;
+}
