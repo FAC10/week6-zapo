@@ -30,9 +30,11 @@ function renameRecipe(obj, cb){
 
 function postData(err, object) {
   dbConnect.query(`SELECT exists(SELECT name FROM cuisine WHERE cuisine.name = '${object.cuisine}') FROM cuisine LIMIT 1;`, (err, res) => {
+    console.log('cuisine checked', res.rows[0].exists);
     if(res.rows[0].exists) {
       dbConnect.query(`INSERT INTO recipes (title, body, cuisine_id) VALUES ('${object.title}', '${object.body}', (SELECT id FROM cuisine WHERE cuisine.name = '${object.cuisine}')) RETURNING ID;`, (err, res) => { //make an insertion to the recipes table with the title and the body coming from the user, and the cuisine_id being returned from the callback this is nested in
         if (err) throw err;
+        console.log('recipe added');
         const recipeID = res.rows[0].id;
         dealWithIngredients(object.ingredients, () => {
           object.ingredients.forEach((e) => {
@@ -41,12 +43,14 @@ function postData(err, object) {
         })
       });
     } else {
-
-  dbConnect.query(`INSERT INTO cuisine (name) VALUES ('${object.cuisine}') RETURNING ID;`), (err, res) => { //make insertion of the cuisine to the cuisines table, returning the ID
-    if (err) throw err;
+      console.log('got here');
+  dbConnect.query(`INSERT INTO cuisine (name) VALUES ('${object.cuisine}') RETURNING ID;`, (err, res) => { //make insertion of the cuisine to the cuisines table, returning the ID
+    if (err) {console.log(err)};
+    console.log('cuisine added');
     const cuisineID = res.rows[0].id; //apparently this is how you get the id of the most recently inserted row
     dbConnect.query(`INSERT INTO recipes (title, body, cuisine_id) VALUES ('${object.title}', '${object.body}', ${cuisineID}) RETURNING ID;`, (err, res) => { //make an insertion to the recipes table with the title and the body coming from the user, and the cuisine_id being returned from the callback this is nested in
       if (err) throw err;
+      console.log('recipe added');
       const recipeID = res.rows[0].id;
       dealWithIngredients(object.ingredients, () => {
         object.ingredients.forEach((e) => {
@@ -54,7 +58,7 @@ function postData(err, object) {
         })
       })
     });
-  };
+  });
 }
 })
 }
@@ -65,17 +69,22 @@ function dealWithIngredients(array, cb){
     dbConnect.query(`SELECT exists(SELECT name FROM ingredients WHERE ingredients.name = '${element}') FROM ingredients LIMIT 1;`, (err, res) => {
       if(!res.rows[0].exists){
         dbConnect.query(`INSERT INTO ingredients (name) VALUES ('${element}') RETURNING ID;`, (err, res) => {
-          if(count === array.length){
-            cb();
+          if(count !== array.length){
+            count+=1;
+            console.log(count, array.length);
           }
-          count+=1;
-          console.log(count, array.length);
+          if (count === array.length) {
+            console.log('i am being called async');
+            cb();
+        }
         });
       } else {
         count+=1;
         console.log(count, array.length);
       }
       if (count === array.length){
+          console.log('i am being called sync');
+
           cb();
         }
 
