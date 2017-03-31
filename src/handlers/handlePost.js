@@ -9,7 +9,6 @@ const handlePost = (req, res) => {
   req.on('end', () => {
     const recipeObj = qs.parse(data);
     recipeObj.ingredients = recipeObj.ingredients.split(',');
-    console.log(recipeObj);
     postData.renameRecipe(recipeObj, postData.postData);
     res.writeHead(302, { Location: '/thanks' });
     res.end();

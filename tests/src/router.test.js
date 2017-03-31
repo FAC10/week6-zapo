@@ -64,16 +64,6 @@ const routes = {
       headers: { 'Content-Type': 'text/html' },
     },
   ],
-  js: [
-    {
-      method: 'GET',
-      url: '/public/index.js',
-    },
-    {
-      statusCode: 200,
-      headers: { 'Content-Type': 'application/javascript' },
-    },
-  ],
   random: [
     {
       method: 'GET',
