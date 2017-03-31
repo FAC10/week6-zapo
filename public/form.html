@@ -11,11 +11,11 @@
 </head>
 
 <body>
-  <div class='header header--half'>
+  <header class='header header--half'>
     <h1 class='header__title'>ZAPO RECIPES</h1>
-  </div>
+  </header>
   <main class="container">
-    <form class="add_recipe" action="/submit" method="POST">
+    <form class="form" action="/submit" method="POST">
       <h2 class="form__title">Add your recipe here!</h2>
       <label class="form__label" for="title">Recipe title:</label>
       <input class="form__input" id="title" type="text" name="title" placeholder="Tasty cake" required>
@@ -25,7 +25,7 @@
       <input class="form__input" id="ingredients" type="text" name="ingredients" placeholder="flour,eggs,butter,sugar" required>
       <label class="form__label" for="cuisine">Cuisine:</label>
       <input class="form__input" id="cuisine" type="text" name="cuisine" placeholder="english" required>
-      <input type="submit" value="Submit">
+      <input class="form__button" type="submit" value="Submit">
     </form>
   </main>
   <script type="text/javascript" src='./public/index.js'>
