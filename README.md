@@ -7,6 +7,14 @@
 
 We are building a simple recipe web application that allows users to input recipes into our database. This list of recipes can then be viewed and filtered in the DOM. As a stretch goal, users will be able to rate these recipes.
 
+## Installation instructions
+- Clone this repository
+- Run ```npm install```
+- Create a ```config.env``` filter
+- Add ```export DB_URL =``` plus the DB_URL (available in our gitter channel)
+- run ```npm run start:dev``` to run the project
+- run ```npm test``` to run tests
+
 ## User Stories
 
 As a user who is interested in finding new recipes:
