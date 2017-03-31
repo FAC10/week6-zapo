@@ -1,16 +1,6 @@
 /* eslint-disable */
 const dbConnect = require('../database/db_connection.js');
 
-function tableInsert(request) {
-  let data = '';
-  request.on('data', (chunk) => {
-    data += chunk;
-  });
-  request.on('end', () => {
-    postData(data);
-  });
-}
-
 /* The object passed ot odstuff will be in this format:
 {
 title: string,
@@ -23,7 +13,7 @@ ingredients: array of strings
 //we still need to change the queries for ingredients and cuisine such that if that row already exists we instead just return the id of the pre-existing row rather than writing a new one
 
 function renameRecipe(obj, cb){
-  dbConnect.query(`SELECT exists(SELECT title FROM recipes WHERE recipes.title = '${obj.title}') FROM recipes LIMIT 1;`, (err, res) => {
+  dbConnect.query(`SELECT exists(SELECT title FROM recipes WHERE recipes.title = '${obj.title}') FROM recipes;`, (err, res) => {
     if (err) {
       cb(err);
     }
@@ -31,7 +21,7 @@ function renameRecipe(obj, cb){
         obj.title += '*';
         renameRecipe(obj, cb);
     } else{
-      cb(null, obj);
+      cb (null, obj);
     }
   });
 }
@@ -60,7 +50,6 @@ function postData(err, object) {
       const recipeID = res.rows[0].id;
       dealWithIngredients(object.ingredients, () => {
         object.ingredients.forEach((e) => {
-          console.log(e);
           dbConnect.query(`INSERT INTO recipe_ingredients (recipe_id, ingredient_id) VALUES (${recipeID}, (SELECT id FROM ingredients WHERE ingredients.name = '${e}'))`)
         })
       })
@@ -71,7 +60,7 @@ function postData(err, object) {
 }
 
 function dealWithIngredients(array, cb){
-  let count = 1;
+  let count = 0;
   array.forEach((element, i) => {
     dbConnect.query(`SELECT exists(SELECT name FROM ingredients WHERE ingredients.name = '${element}') FROM ingredients LIMIT 1;`, (err, res) => {
       if(!res.rows[0].exists){
@@ -80,13 +69,16 @@ function dealWithIngredients(array, cb){
             cb();
           }
           count+=1;
+          console.log(count, array.length);
         });
       } else {
-        if (count === array.length){
+        count+=1;
+        console.log(count, array.length);
+      }
+      if (count === array.length){
           cb();
         }
-        count+=1;
-      }
+
       })
   })
 }
