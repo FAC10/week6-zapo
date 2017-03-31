@@ -9,17 +9,15 @@ function createHtml(err, recipeArr) {
   recipeArr.map((recipe) => {
     markup += `
     <article class="recipe">
-        <h3 class="recipe__title">${recipe.title}</h2>
-        <div class="recipe__body">
-            <p class="recipe__method">${recipe.body}</p>
-            <h4 class="recipe__subtitle">Ingredients</h3>
-              <ul class="recipe__ingredientList">
-              ${recipe.ingredients.map(ingredient => `<li class="recipe__ingredient">${ingredient}</li>`).join('\n')}
-            </ul>
-            <footer class="recipe__footer">
-                <p class="recipe__cuisine">Cuisine: ${recipe.cuis_name}</p>
-            </footer>
-        </div>
+      <h3 class="recipe__title">${recipe.title}</h2>
+        <p class="recipe__method">${recipe.body}</p>
+        <h4 class="recipe__subtitle">Ingredients</h3>
+        <ul class="recipe__ingredientList">
+        ${recipe.ingredients.map(ingredient => `<li class="recipe__ingredient">${ingredient}</li>`).join('\n')}
+        </ul>
+        <footer class="recipe__footer">
+            <p class="recipe__cuisine">Cuisine: ${recipe.cuis_name}</p>
+        </footer>
     </article>
     `;
   });
