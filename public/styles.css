@@ -1,5 +1,6 @@
 * {
-  font-family: 'Libre Franklin', sans-serif;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 input,
@@ -13,13 +14,14 @@ textarea {
 
 body {
   margin: 0;
-  font-size: 1.25rem;
+  font-family: 'Libre Franklin', sans-serif;
   color: #333;
   background-color: #eee;
 }
 
 .header {
   position: relative;
+  padding: 1rem;
   display: flex;
   justify-content: center;
   -ms-align-items: center;
@@ -27,6 +29,7 @@ body {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  background-color: #333;
   background-image: url('assets/header.jpg');
   background-repeat: no-repeat;
   background-position: center;
@@ -47,12 +50,11 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.25);
+  background-color: rgba(0, 0, 0, 0.3);
   z-index: -10;
 }
 
 .header__title {
-  font-size: 5rem;
   color: white;
   width: 100%;
   letter-spacing: 1rem;
@@ -65,11 +67,11 @@ body {
 
 .header__link {
   display: block;
-  padding: 0.5em 1em;
-  font-size: 1.5rem;
+  padding: 0.75em 1em;
   text-decoration: none;
-  color: white;
-  background-color: tomato;
+  line-height: 1;
+  color: #222;
+  background-color: salmon;
   border-radius: 2px;
   -webkit-transition: background-color 0.2s;
   -o-transition: background-color 0.2s;
@@ -82,7 +84,7 @@ body {
 }
 
 .header__link:hover {
-  background-color: orangered;
+  background-color: indianred;
 }
 
 .header__link:last-child:hover {
@@ -90,9 +92,9 @@ body {
 }
 
 .container {
+  padding: 1rem;
   max-width: 40em;
   margin: 0 auto;
-  margin-top: 2em;
 }
 
 .form__input {
@@ -100,4 +102,35 @@ body {
   margin-bottom: 1em;
   padding: 0.5em;
   border: 1px solid grey;
+}
+
+.form__button {
+  padding: 0.5rem 1rem;
+  color: white;
+  background-color: tomato;
+  -webkit-transition: background-color 0.2s;
+  -o-transition: background-color 0.2s;
+  transition: background-color 0.2s;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.form__button:hover {
+  background-color: orangered;
+}
+
+@media (min-width: 40em) {
+  body {
+    font-size: 1.25rem;
+  }
+  .header__title {
+    font-size: 5rem;
+  }
+  .header__link {
+    font-size: 1.5rem;
+  }
+  .container {
+    margin-top: 1rem;
+  }
 }
